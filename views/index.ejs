@@ -1,0 +1,22 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insignia API</title>
+  </head>
+  <body>
+    <div class="login_img">
+      <!-- <h1>Dog Image API </h1> -->
+      <h1>Insigia API</h1>
+      <ul>
+        <% newsData.results.forEach(result => { %>
+            <li>
+                <h2><%= result.title %></h2>
+                <p><%= result.description %></p>
+                <p><%= result.link %></p>
+            </li>
+        <% }) %>
+    </ul>
+    </div>
+  </body>
+</html>
