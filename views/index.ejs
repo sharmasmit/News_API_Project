@@ -2,21 +2,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Insignia API</title>
+    <link rel="stylesheet" href="/style/main.css">
+    <title>Weather API</title>
   </head>
   <body>
-    <div class="login_img">
+    <div class="main">
       <!-- <h1>Dog Image API </h1> -->
-      <h1>Insigia API</h1>
-      <ul>
-        <% newsData.results.forEach(result => { %>
-            <li>
-                <h2><%= result.title %></h2>
-                <p><%= result.description %></p>
-                <p><%= result.link %></p>
-            </li>
-        <% }) %>
-    </ul>
+      <h1>Weather Application</h1>
+      <form action="/" method="get">
+        <input type="text" name="city" placeholder="Enter city name" required>
+        <button type="submit" class="search-btn">Search</button>
+      </form>
+      <h2>Weather in <%= cityName %></h2>
+      <div id="weatherData">
+        <p>The weather is: <%= weatherDescription %></p>
+        <p>Temperature: <%= temperature %>°C</p>
+        <p>Humidity: <%= humidity %>%</p>
+      </div>
     </div>
   </body>
 </html>

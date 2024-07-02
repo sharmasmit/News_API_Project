@@ -1,0 +1,39 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    background-color: aliceblue;
+    font-family: 'Poppins', sans-serif;
+}
+input, button{
+    padding: 10px 15px;
+    background-color: black;
+    color: aliceblue;
+    border: none;
+    border-radius: 1.2rem;
+    font-size: 1.1rem;
+}
+.search-btn{
+    background-color: aliceblue;
+    color: black;
+    font-weight: bold;
+    padding: 6px 15px;
+    border: 4px solid black;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+}
+.search-btn:hover{
+    background-color: black;
+    color: aliceblue;
+}
+
+input::placeholder{
+    color: rgba(240, 248, 255, 0.877);
+}
+p{
+    font-size: 1.1rem;
+    font-weight: bold;
+}

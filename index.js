@@ -8,20 +8,34 @@ const port = 3000;
 app.use(express.static("public"));
 
 app.get("/", async (req, res) => {
+  const cityName = req.query.city;
+  const apiKey = "d36416902d21ce68786a4cc7c8d10284";
+
+  if (!cityName) {
+    res.render("index.ejs", {
+      cityName: "",
+      weatherDescription: "",
+      temperature: "",
+      humidity: ""
+    });
+    return;
+  }
+
   try {
     const result = await axios.get(
-      "https://newsdata.io/api/1/news?apikey=pub_432365836b257d392a9f42b559e419ad5da5d&country=in&language=en&category=crime,education,politics,sports,technology "
+      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`
     );
     res.render("index.ejs", {
-      newsData: result.data, // Pass the entire data object
+      cityName: result.data.name,
+      weatherDescription: result.data.weather[0].description,
+      temperature: result.data.main.temp,
+      humidity: result.data.main.humidity
     });
   } catch (error) {
-    console.log(error.response.data);
-    res.status(500);
+    console.error("Error fetching weather data:", error.message);
+    res.status(500).send("Internal Server Error");
   }
 });
-
-
 // app.get("/", async (req, res) => {
 //   try {
 //     const result = await axios.get(
@@ -51,5 +65,5 @@ app.get("/", async (req, res) => {
 // });
 
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-})
+  console.log(`Server is running on port ${port}`);
+});
